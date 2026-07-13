@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cojkhykm0t5yp"]
+
+[ext_resource type="PackedScene" uid="uid://g66jjdg8j4ac" path="res://Scenes/Entity/Entity.tscn" id="1_wpwoo"]
+[ext_resource type="Script" uid="uid://cx3pl2tpu2slj" path="res://Scenes/Entity/Player/player.gd" id="2_i5q2c"]
+
+[node name="Player" unique_id=2110384820 groups=["player"] instance=ExtResource("1_wpwoo")]
+script = ExtResource("2_i5q2c")
+
+[node name="Area2D" parent="." index="2" unique_id=1845024949]
+collision_layer = 2
+collision_mask = 2

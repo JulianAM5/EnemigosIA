@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bc2hqmbk433y2"]
+
+[ext_resource type="PackedScene" uid="uid://cojkhykm0t5yp" path="res://Scenes/Entity/Player/player.tscn" id="1_idj7w"]
+[ext_resource type="PackedScene" uid="uid://cg5gqobqqn8ht" path="res://Scenes/Entity/Enemies/enemy.tscn" id="2_idj7w"]
+
+[node name="Main" type="Node2D" unique_id=748200201]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1133378068]
+offset_right = 1080.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." unique_id=2110384820 instance=ExtResource("1_idj7w")]
+position = Vector2(150, 538)
+
+[node name="Enemy" parent="." unique_id=1864933784 instance=ExtResource("2_idj7w")]
+position = Vector2(786, 343)

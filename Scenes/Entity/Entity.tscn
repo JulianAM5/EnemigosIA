@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://g66jjdg8j4ac"]
+
+[ext_resource type="Script" uid="uid://dev6hu2tnn7h7" path="res://Scenes/Entity/Entity.gd" id="1_oq86a"]
+[ext_resource type="Texture2D" uid="uid://yv1nflnka0px" path="res://Assets/icon.svg" id="1_rpqav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_upwq6"]
+size = Vector2(117, 117)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4crb7"]
+size = Vector2(115, 110)
+
+[node name="Entity" type="CharacterBody2D" unique_id=2110384820]
+script = ExtResource("1_oq86a")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2035768845]
+texture = ExtResource("1_rpqav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1908370055]
+visible = false
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_upwq6")
+debug_color = Color(1.4679879e-06, 0.64868206, 0.18288171, 0.41960785)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1845024949]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=852544046]
+shape = SubResource("RectangleShape2D_4crb7")
+debug_color = Color(0.9973782, 0, 0.17707643, 0.41960785)
