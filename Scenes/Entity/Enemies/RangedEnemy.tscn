@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cekmqc5st1vmi"]
+
+[ext_resource type="PackedScene" uid="uid://g66jjdg8j4ac" path="res://Scenes/Entity/Entity.tscn" id="1_6kf5h"]
+[ext_resource type="Script" uid="uid://tfd0bkdvvtuy" path="res://Scenes/Entity/Enemies/ranged_enemy.gd" id="2_qfed5"]
+[ext_resource type="Script" uid="uid://2bwy7wtlsoww" path="res://Scenes/Entity/Enemies/state_machine.gd" id="3_8est2"]
+[ext_resource type="Script" uid="uid://wifkhlnfkyo" path="res://Scenes/Entity/Enemies/states/stateChase.gd" id="4_831hn"]
+[ext_resource type="Script" uid="uid://de12bp225im4k" path="res://Scenes/Entity/Enemies/states/stateAttack.gd" id="5_54qtg"]
+[ext_resource type="PackedScene" uid="uid://cewjcry25hfdf" path="res://Scenes/Entity/Enemies/bullet.tscn" id="6_pytyn"]
+
+[node name="RangedEnemy" unique_id=2110384820 instance=ExtResource("1_6kf5h")]
+script = ExtResource("2_qfed5")
+
+[node name="Sprite2D" parent="." index="0" unique_id=2035768845]
+rotation = 1.5707964
+scale = Vector2(0.375, 0.375)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1908370055]
+visible = true
+scale = Vector2(0.425, 0.425)
+
+[node name="Area2D" parent="." index="2" unique_id=1845024949]
+scale = Vector2(0.425, 0.425)
+
+[node name="StateMachine" type="Node" parent="." index="3" unique_id=302662061 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_8est2")
+initial_state = NodePath("StateChase")
+
+[node name="StateChase" type="Node" parent="StateMachine" index="0" unique_id=194116759 node_paths=PackedStringArray("enemy", "next_attack")]
+script = ExtResource("4_831hn")
+enemy = NodePath("../..")
+next_attack = NodePath("../../NextAttackTimer")
+metadata/_custom_type_script = "uid://wifkhlnfkyo"
+
+[node name="StateAttack" type="Node" parent="StateMachine" index="1" unique_id=187925420 node_paths=PackedStringArray("attack_timer", "enemy")]
+script = ExtResource("5_54qtg")
+fire_rate = 10.0
+attack_timer = NodePath("../../AttackTimer")
+bullet_scene = ExtResource("6_pytyn")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://de12bp225im4k"
+
+[node name="AttackTimer" type="Timer" parent="." index="4" unique_id=760814809]
+wait_time = 0.5
+one_shot = true
+
+[node name="NextAttackTimer" type="Timer" parent="." index="5" unique_id=2030309507]
+one_shot = true
+
+[connection signal="timeout" from="AttackTimer" to="StateMachine/StateAttack" method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="NextAttackTimer" to="StateMachine/StateChase" method="_on_next_attack_timer_timeout"]

@@ -1,5 +1,12 @@
-res://Scenes/Entity/Enemies/enemy.tscn
-res://Scenes/Entity/Enemies/enemy.gd
-res://Scenes/Entity/Player/player.tscn
-res://Scenes/Entity/Player/player.gd
+res://Scenes/Entity/Enemies/RangedEnemy.tscn
+res://Scenes/Entity/Enemies/ranged_enemy.gd
+res://Scenes/Entity/Enemies/state.gd
+res://Scenes/Entity/Enemies/state_machine.gd
+res://Scenes/Entity/Enemies/states/stateIdle.gd
+res://Scenes/Entity/Enemies/states/stateChase.gd
 res://Scenes/Main.tscn
+res://Scenes/Entity/Enemies/states/stateAttack.gd
+res://Scenes/Entity/Enemies/bullet.tscn
+res://Scenes/Entity/Enemies/bullet.gd
+res://Scenes/Entity/Enemies/enemy.tscn
+res://Scenes/Entity/Player/player.tscn
